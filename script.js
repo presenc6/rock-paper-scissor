@@ -9,9 +9,9 @@ let getComputerChoice = () => {
     return choices[randomizer];
 }
 
-let getPlayerChoice = () => {
+/* let getPlayerChoice = () => {
     return prompt("Pick your fighter!");
-}
+} */
 
 
 let oneRound = (playerChoice, computerChoice) => {
@@ -20,45 +20,54 @@ let oneRound = (playerChoice, computerChoice) => {
     if(playerChoice == "rock" && computerChoice == "rock") {
         playerScore += 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "It's a Tie!"
     } else if(playerChoice == "rock" && computerChoice == "paper") {
         playerScore -= 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "You Lose! Paper beats Rock"
     } else if(playerChoice == "rock" && computerChoice == "scissor") {
         playerScore += 1;
         computerScore -= 1;
+        console.log(playerScore, computerScore);
         return "You Won! Rock beats Scissor"
     } else if(playerChoice == "paper" && computerChoice == "rock") {
         playerScore += 1;
         computerScore -= 1;
+        console.log(playerScore, computerScore);
         return "You Won! Paper beats Rock"
     }  else if(playerChoice == "paper" && computerChoice == "paper") {
         playerScore += 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "It's a Tie!"
     } else if(playerChoice == "paper" && computerChoice == "scissor") {
         playerScore -= 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "You Lose! Scissor beats Paper"
     } else if(playerChoice == "scissor" && computerChoice == "rock") {
         playerScore -= 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "You Lose! Rock beats Scissor"
     } else if(playerChoice == "scissor" && computerChoice == "paper") {
         playerScore += 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "You Won! Scissor beats Paper"
     } else if(playerChoice == "scissor" && computerChoice == "scissor") {
         playerScore += 1;
         computerScore += 1;
+        console.log(playerScore, computerScore);
         return "It's a Tie!"
     } else {
         return "Invalid input!"
     }
 }
 
-let playGame = () => {
+/* let playGame = () => {
     for(let i = 0; i < 5; i++) {
         playerChoice = getPlayerChoice().toLowerCase();
         computerChoice = getComputerChoice();
@@ -70,6 +79,14 @@ let playGame = () => {
     } else {
         console.log(`Player Score: ${playerScore}\nComputer Score: ${computerScore}\nYou Lose!`)
     }
-}
+} */
 
-playGame();
+//playGame();
+
+const btn = document.querySelectorAll("button");
+
+btn.forEach(button => {
+    button.addEventListener("click", e => {
+        oneRound(e.target.textContent, getComputerChoice());
+    });
+});
