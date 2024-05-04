@@ -4,6 +4,9 @@ let computerChoice;
 let playerScore = 0;
 let computerScore = 0;
 
+let scoreDisplay = document.querySelector(".scoreDisplay");
+scoreDisplay.textContent = `Player Score: ${playerScore}\nComputer Score: ${computerScore}`;
+
 let getComputerChoice = () => {
     let randomizer = Math.floor(Math.random() * 3);
     return choices[randomizer];
@@ -15,55 +18,61 @@ let getComputerChoice = () => {
 
 
 let oneRound = (playerChoice, computerChoice) => {
-    console.log(playerChoice, computerChoice);
 
     if(playerChoice == "rock" && computerChoice == "rock") {
         playerScore += 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "It's a Tie!"
     } else if(playerChoice == "rock" && computerChoice == "paper") {
         playerScore -= 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "You Lose! Paper beats Rock"
     } else if(playerChoice == "rock" && computerChoice == "scissor") {
         playerScore += 1;
         computerScore -= 1;
         console.log(playerScore, computerScore);
-        return "You Won! Rock beats Scissor"
     } else if(playerChoice == "paper" && computerChoice == "rock") {
         playerScore += 1;
         computerScore -= 1;
         console.log(playerScore, computerScore);
-        return "You Won! Paper beats Rock"
     }  else if(playerChoice == "paper" && computerChoice == "paper") {
         playerScore += 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "It's a Tie!"
     } else if(playerChoice == "paper" && computerChoice == "scissor") {
         playerScore -= 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "You Lose! Scissor beats Paper"
     } else if(playerChoice == "scissor" && computerChoice == "rock") {
         playerScore -= 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "You Lose! Rock beats Scissor"
     } else if(playerChoice == "scissor" && computerChoice == "paper") {
         playerScore += 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "You Won! Scissor beats Paper"
     } else if(playerChoice == "scissor" && computerChoice == "scissor") {
         playerScore += 1;
         computerScore += 1;
         console.log(playerScore, computerScore);
-        return "It's a Tie!"
     } else {
         return "Invalid input!"
+    }
+
+    scoreDisplay.textContent = `Player Score: ${playerScore}\nComputer Score: ${computerScore}`;
+
+    if(playerScore == 5) {
+        console.log("You Won!")
+        scoreDisplay.textContent = "You Win!"
+        playerScore = 0;
+        computerScore = 0;
+    } else if(computerScore == 5) {
+        scoreDisplay.textContent = "You Lose!"
+        computerScore = 0;
+        playerScore = 0;
+    } else if(playerScore == 5 && computerScore == 5) {
+        console.log("It's a Draw!")
+        scoreDisplay.textContent = "It's a Draw!"
     }
 }
 
